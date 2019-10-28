@@ -1,0 +1,120 @@
+Welcome to the Pinewood Derby Timer forum.
+Here are the answers to some frequently asked questions.
+
+Q: I sent a message to the forum, why didn't it show up immediately?
+A: Because of spam.  There were a number of people (and I use that term loosly) who would join the forum and then spam the group with ads for mortgages, porn, etc.  To combat this, I set the forum to require that new users have their posts moderated.  What this means is that I have to read and approve what you post before it goes out to the rest of the forum.  Once I see that you are a legitimate user, I will change your status so that you can post directly to the forum.
+
+Q: Is the circuit available pre-built?
+A: No.  However, bare boards are available from my company, BL Design Solutions, LLC.  Look on the main information page at http://pinewood.hmpg.net under the "Timer Boards For Sale" section for information and links.
+
+Q: Where can I get the phototransistors?
+A: There is a Phototransistors.txt file in the files section of the forum.  Please download this file and review the contents.  It contains links to sources as well as data sheets and information.
+
+Q: Can I get the source to your timer?
+A: No, I don't make the source to the DOS program available.  There is a discussion thread (search the message forum for 'SOURCE CODE') that contains a few code snippets.  These are offered without support of any kind. The author of the Windows program, RaceTimer, has made his source available in the files area if you want to look at that.
+
+Q: Why doesn't my timer work right?
+A: The first guess is that you didn't hook up the ground line from your circuit to the ground pins on the DB25 connector.  This is really not your fault as the instructions are not particularly clear about this.  You need to hook the ground from the circuit to any/all of the DB25 pins 18-25.  These are all ground lines.
+
+Q: Are you sure this really works?  Mine doesn't work at all!
+A: Yes!  Literally hundreds (probably thousands by now) of other people have built the same circuit and used the same software with success.  If you are having problems, send a message to the forum and we will see what we can do to help get you up and going.
+
+Q: Where can I get some help with my hardware / software?
+A: That's what the forum is all about!  Post your question or comment and I'm sure you will get lots of help from everyone else in the group.
+
+Q: Can I post my software on your forum?
+A: As long as it is freeware, you are welcome to post it in the files area. I am happy to have other people write software for the timer hardware.  I will not allow commercial software, shareware, beggarware or any other form of money making software on the forum.  This forum is a FREE service to the Scouting community and I intend to keep it that way.
+
+Q: How do I make a DOS boot disk?
+A: That all depends.  If you are using Windows 98 or earlier you can create a boot disk directly in Windows.  If you are using some other OS (Windows NT, Windows 2000, Windows XP, etc.) you can create a bootable DOS disk downloading an appropraite image from http://www.bootdisk.com.  I suggest the Windows 98 SE Custom disk but you can use almost any of the DOS bootdisks listed on the site.
+
+Although I haven't tried this myself, others tell me that http://www.ultimatebootcd.com/ will allow you to create a bootable CD for those systems that do not have a floppy disk.
+
+The following steps for creating a bootable CD are KNOWN to work (at least, they worked for me) and use only freeware or open source tools and data.  All of the following steps were done in Windows XP:
+1. Download an image of the "Windows 98 SE Custom" boot disk from http://www.bootdisk.com/bootdisk.htm
+2. Download the Virtual Floppy Drive (VFD) from http://chitchat.at.infoseek.co.jp/vmware/vfd.html
+3. Extract and install VFD ('vfd install' followed by 'vfd start')
+4. Create a new image file mapped to drive A (vfd open w98boot.img /new /144)
+5. Extract the Win98 image to the new virtual drive (boot98sc.exe)
+6. Delete a few non-essential utilities to make room on the disk image (fdisk, deltree, smartdrv, scanreg, etc.)
+7. Copy pinewood.exe to the virtual drive (copy pinewood.exe a:)
+8. Create a new autoexec.bat with the pinewood command line
+9. Delete config.sys or at least edit it to remove the CDROM driver (rem DEVICE=cd1.SYS /D:banana)
+10. Dismount the virtual drive (vfd close)
+11. Create a bootable ISO image from the floppy disk image (mkbiso w98boot.iso w98boot.img)
+12. Burn the ISO image to a CD (download BurnCDCC from http://www.terabyteunlimited.com/utilities.html#burncdcc if you don't have CD burner software or your software wont read an ISO image).
+
+Congratulations!  You now have a bootable CD with pinewood installed.  Let the race begin!
+
+Q: What is a 'command line parameter'?
+A: The command line is the way you enter commands for DOS to execute.  There are a number of built in commands such as CLS (clear the screen) or DIR (get a directory listing, a list of all the files on the disk).  Most of the programs you use are stored in one of three types of files.  There are batch files (such as AUTOEXEC.BAT) which are just lists of commands to execute just as if you typed them at the command line yourself.  There are COM files which are very small programs.  And there are EXE files which are larger programs such as PINEWOOD.EXE.
+
+The command prompt tells you that DOS is ready for you to enter a command at the command line.  
+The default prompt is:
+	A:\> _
+Your cursor is probably blinking waiting for you to type a command.  You enter a command at the command line by typing one or more words and pressing enter.  For example, type DIR and press enter.  You should see a list of the files that are on your drive and then another command prompt.
+
+To start a program in DOS you type the name of the file (for example PINEWOOD.EXE) at the command prompt.  You can leave off the extension (the .EXE in this case) and just type the base name (in our case PINEWOOD).  A command line parameter is something that comes after the name of the program and is separated from the name of the program by a space.  These parameters tell the program how to behave or what to act on.  When you type DIR you can specify what files you want to see.  For example, typing DIR *.BAT will show you only those files that end in .BAT (batch files).
+
+Q: How do I change the number of lanes?
+Q: How do I use a different parallel port?
+Q: How do I change from status pins to data pins?
+A: On the pinewood web page (http://pinewood.hmpg.net) it describes three command line parameters (P, T and L) that set the port, port type, and number of lanes respectively.  Here is a quote from that web page:
+
+There are three optional command line parameters to the program as follows: 
+
+Px = Set the port number to x (x is 1, 2 or 3 for LPT1, LPT2 or LPT3) 
+    -- OR -- 
+Pxxx = Set the port address to xxx (xxx is in hex) 
+
+Tx = Port type 0 or 1 (0 = read from status port, pins 15-11 or 1 = data port, pins 2-9*) 
+
+Lx = Set the number of lanes (default is 3) 
+
+* Note that the use of the data pins for input (option T1) requires an EPP or ECP parallel port.  These ports support bi-directional I/O on the data pins.  Most older computers do not have EPP/ECP ports.  If you are planning to use an older computer with a larger track (more than 4 lanes) you should confirm that it has an EPP/ECP port.
+
+Command line parameters are typed after the program name and before you hit enter (see FAQ entry "What is a 'command line parameter'" for more information).  So, if you wanted to use 4 lanes instead of 3 you would enter:
+
+        pinewood L4
+
+If you wanted to use port 2 instead of port 1 (LPT2 instead of LPT1) you would enter:
+
+        pinewood P2
+
+If you wanted to use the data pins instead of the status pins you would type:
+
+        pinewood T1
+
+If you wanted to combine all of these options (4 lanes, port 2, data pins) you would enter:
+
+        pinewood L4 P2 T1
+
+If you are launching pinewood from AUTOEXEC.BAT you will need to edit AUTOEXEC.BAT and put the parameters after the program name.
+
+Q: What units is the speed number expressed in?
+A: The speed number is in scale miles per hour.  There is a long discussion thread in the messages section talking in detail about this, but let me give you the short version here.
+
+The speed is calculated from the amount of time that the car covers the sensor at the end of the track.  This was chosen so that the software didn't have to know anything about the length of your track.  The speed is based on the assumption that a pinewood derby car is 7 inches long and a real car is 16 feet long.  The speed is calculated using these numbers.
+
+Note that the speed number has NO BEARING on the results of the race.  It is used as a "human interest" number only and reported on the individual race printouts.
+
+Q: What does the 'clicks' number mean on the diagnostics screen?
+Q: Why does the 'clicks' number flicker on the diagnostics screen?
+A: The 'clicks' number is the number of BIOS real-time-clock ticks (1.193 MHz or 1,193,182 clicks per second) that it takes to read the parallel port.  It flickers on the diagnostics screen because it is constantly reading the parallel port and updating the screen.  This number gives you an indication of how fast your CPU is and what timer resolution you can expect from your track.  For example if your 'clicks' number on the diagnostics screen is 10 (or hovering around 10) then you can calculate that your timer resolution is 1,193,182 / 10 or just over 1/100,000th of a second.  If you then take the average speed of a car down the track (in my case, cars cover my 32 foot track in about 2.8 seconds) and divide that by the resolution you get the timer resolution expressed in distance.  In my case that would be 32 ft / 2.8 seconds = 137 inches per second (ips); 137 ips / 119318th of a second = a resolution of 0.0012 inches or just over 1/1000th of an inch (about the width of a human hair).  I guarantee that my sensors are not placed in the track with anywhere near that resolution.
+
+Even if your clicks counter were 10 times larger (highly doubtful since I have a really old laptop and I get 10), that would result in a resolution of about 1/100th of an inch which is likely better than your sensor placement and probably better than the human eye can judge a race.
+
+The clock that is used to do this timing has been the same since the very first PC ever produced right through today's highest performance machines.  The CMOS real-time-clock (RTC) uses an Intel 8253 Programmable Interrupt Timer feed by a 1,193,182 Hz oscillator to drive the PC's internal clock.  Normally the PC divides the input frequency (1.193 MHz) by 65536 to arrive at the 18.2 ticks per second to update the operating system's software clock.  However, it is possible to read the input counter as it runs down and achieve a much higher resolution.  I call these numbers 'clicks' instead of 'ticks' to distinguish between the 1.193 MHz clock ('clicks') and the 18.2 Hz clock ('ticks').
+
+Q: What is the clicks number on the race result printout
+A: See above for a discussion of what 'clicks' is in general.  This number, on the race printout, shows the total number of clicks for each car across all races.  This number can be used in case of a tie in the seconds number printed to the left.  I've never had this situation (a tie) occur, but I thought I'd plan ahead in case it ever came up.  The computer uses the clicks number internally to sort the race results.
+
+Q: How accurate is the timing system in terms of distance
+A: The answer depends on how fast cars are going at the end of the track.  In my case cars take about 2.8 seconds to go down my 32 foot track. Using that as an average speed (they are actually going faster at the finish) results in a potential accuracy of approximately 0.00012 inches or about 0.03 of the width of a human hair.
+	1 Micron = 0.000039"
+	Human hair = 100 microns = 0.004"
+	Timing to 1/1193182 of a second
+	32 feet in 2.8 seconds = 0.00012 inches / click
+	
+	0.00012 / 0.004 = 0.03 so the software measures to about 3/100 of a human hair or about 3 microns
+Personally, I think that's pretty accurate for $25 in parts and a laptop!  By the way, most industrial CNC milling machines are only accurate to about 1/10000 of an inch (0.0001) so this software is just about as accurate as a $70,000 industrial milling machine if you think about it that way.

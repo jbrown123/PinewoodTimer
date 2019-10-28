@@ -1,0 +1,100 @@
+<html>
+
+<head>
+<title>Information for V1 timer boards</title>
+<meta name="generator" content="Namo WebEditor v5.0">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<h1>Information&nbsp;for V1 timer boards</h1>
+<p>Here is a picture of the <a href="o_bareboard.jpg" target="picture" title="Picture of just the bare board">bare 
+board</a> and a <a href="o_finishedboard.jpg" target="picture" title="Picture of a completed board">completed board</a> for 
+reference.</p>
+<p>In order to complete the project 
+you will need to add the following components:</p>
+<ul>
+    <li>Right angle, PC board mount DB-25 male connector (unless you buy the 
+    kit that includes the connector)</li>
+    <li>Five 10K-Ohm resistors (Radio Shack #271-1335, $0.99 for a 5 pack)</li>
+    <li>Start switch</li>
+    <li>Lane sensors (see parts list above or discussions on the forum for suggestions)</li>
+    <li>Hookup wire for start switch and lane sensors</li>
+    <li>+5 volt power supply</li>
+</ul>
+<p>You may not need the resistors OR the 5 volt power supply if your computer 
+has built-in pull-up resistors. Unfortunately there is no real way to 
+know if your computer has the built-in resistors. Some do, some don't. 
+If your computer does not have pull-up resistors your timer may operate 
+erratically or it may give sluggish results.</p>
+<h2>Assembly Instructions</h2>
+<p>Refer to the <a href="o_finishedboard.jpg" target="picture" title="Picture of a completed circuit board">completed 
+board photo</a> as necessary:</p>
+<ul>
+    <li>Make sure you insert all components on the BLANK side of the board. 
+    The side with the traces is only used to solder parts in place. There 
+    should be no components on the solder side (the side with the traces).</li>
+    <li>Insert the pins of the DB-25 connector through the holes and solder 
+    the pins in place. It is not necessary to solder every pin. You 
+    can simply solder all the pins with traces to them, plus a few on the opposite 
+    end of the connector to help hold it in place. &nbsp;In order to keep the 
+    board cost low I elected not to put a solder mask on the board. Make sure 
+    that you don't accidentally solder bridge between two pins or between a 
+    pin and a trace. This is especially easy to do near pin 2, pin 9,&nbsp;and 
+    pin 13.</li>
+    <li>Next insert the resistors into the holes in the middle of the board. 
+    Resistors are not polarized so it doesn't matter which end goes which 
+    way. Flip the board over and solder each resistor in place. Again, make 
+    sure that you do not solder bridge between a pin and an ajoining trace. 
+    &nbsp;Clip off any excess resistor leads that are sticking out of the back of 
+    the board.</li>
+    <li>Solder wires onto the ends of the phototransistors for each lane. Use 
+    one color of wire for the emitter and a different color for the collector 
+    on each sensor. This will make the next step MUCH easier and less 
+    error prone. Use just enough wire to reach from the back of your PC to the 
+    track. I would use no more than 3 to 5 feet of wire on 
+    each phototransistor. Each sensor should have the same amount of wire 
+    as all the others for proper timing (electricity travels about 9 inches 
+    per nanosecond so if one wire is 9 inches shorter than another, the timing 
+    will be off by 1 nanosecond between the two sensors). Also solder 
+    (or otherwise attach) a wire to each side of the start gate switch. Remember 
+    to leave enough wire to stretch all the way to the top of the track.</li>
+    <li>Refering to the solder side of the board, note that there are 5 rows 
+    of two holes each on the right side of the board. These are the connections 
+    for the start gate (at the top, notice the word &quot;start&quot; above 
+    the top row of holes) and the lane sensors (rows 2-5 = lanes 1-4 respectively). 
+    On the right side of the rows is the word &quot;emitter&quot; which 
+    indicates where the emitter from each sensor should be connected (the 
+    wire from the collector goes in the other hole in each row). Flip 
+    the board back over so you are looking at the component (blank) side and 
+    then run the wires through the board and solder them in place making sure 
+    to connect the emitter to the correct side on each row. Alternately, 
+    you can solder a connector in place (as in the <a href="o_finishedboard.jpg" target="picture" title="Picture of completed board">photo</a>) and then connect 
+    the wires to that so that you can attach and remove the sensors easily. 
+    While you are at it, solder the wire from the start gate to the top 
+    row of holes (polarity does not matter for the start gate, either wire in 
+    either hole will work).</li>
+    <li>Now hook up a regulated 5 volt power supply to the board. Again 
+    refering to the solder side, note the markings for &quot;+5&quot; and &quot;GND&quot; 
+    which indicate where the +5 line and the ground line from the power 
+    supply should be connected. Note that the power supply is not hooked up 
+    in the photo.</li>
+    <li>Now, <b>DOUBLE CHECK EVERYTHING!!!</b> I refuse to be held responsible 
+    for damage to your computer if you have not connected things correctly and 
+    double checked your work. Make sure you have the +5 and ground from 
+    the power supply connected correctly. Plug in the power supply and 
+    check the voltages with a meter to confirm this. While you are at it, check 
+    that the various pins on the DB-25 change state properly when you cover 
+    and uncover the phototransistors. You should be able to check this 
+    quite easily using a volt meter.</li>
+    <li><b>ONLY</b> after you have checked <b>EVERYTHING</b> and then <b>DOUBLE 
+    CHECKED</b> everything should you attach the circuit to your PC. Run 
+    the pinewood software and use the diagnostics screen to confirm that each 
+    of the bits changes state properly when you cover and uncover each phototransistor. 
+    Also check that the start gate switch changes states correctly. If 
+    not, carefuly review the instructions above to make sure you haven't missed 
+    anything. Check closely for phototransistors that are not hooked up correctly 
+    (emitter and collector reversed).</li>
+</ul>
+</body>
+
+</html>

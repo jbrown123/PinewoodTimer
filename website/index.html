@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 TRANSITIONAL//EN">
+<HTML>
+
+<HEAD>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-422707-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-422707-2";
+_udn="www.hmpg.net";
+urchinTracker();
+</script> -->
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Author" CONTENT="James H. Brown">
+<META NAME="GENERATOR" CONTENT="Mozilla/4.75 [en] (WinNT; U) [Netscape]">
+<META NAME="Classification" CONTENT="Pinewood derby electronic timer, schematic, freeware, source code">
+<META NAME="Description" CONTENT="This page describes the hardware (including a schematic) and software necessary to create a very inexpensive Pinewood Derby timer.   The software, which runs under MS-DOS, is available for download for free, including source code.   A schematic of the electronic circuit necessary to create the timer is available.   A parts list of the components used to create the timer is available for download">
+<META NAME="KeyWords" CONTENT="pinewood, pinewood derby, pinewood derby timer, electronic timer, electronic pinewood derby timer, freeware, software, source code, pinecar, pinecar derby, derby timer, schematic">
+<TITLE>World's Least Expensive Pinewood Derby Timer</TITLE>
+</HEAD>
+
+<BODY>
+<h1>Rentals</h1>
+<p>If you are here to rent our pinewood derby track, please visit our reservation page at <a href="http://troop999.cpuc.org/pinewood.php"   onClick="_gaq.push(['_trackEvent', 'XLink', 'Reservation']);">http://troop999.cpuc.org/pinewood.php</a>
+
+<H1>World's Least Expensive Pinewood Derby Timer</H1>
+Well, okay, maybe that's a bit rash. It is the least expensive electronic 
+pinewood derby timer <u>I've</u> ever found! In fact that's the reason 
+this project exists. As I looked through <i>Scouting</i> magazine and 
+on the Internet the least expensive timer I could find was approximately $160 
+<u>per lane</u>. I thought that was a bit pricey for something as simple 
+as a timer for a pinewood derby. My timer cost about $25 total for three 
+lanes, the most expensive component being the lane sensors at about $3 each. 
+<P>I was the committee chairman of a Cub Scout pack in Provo, Utah (Cub Scout 
+Pack 51, a community sponsored unit). Each year we spent about $50 to 
+rent an electronically timed Pinewood derby track. After a couple of years 
+of asking (begging) I finally convinced one of the fathers in the pack to build 
+the physical track. My part of the deal was to build the electronics to 
+time the cars. A friend at work who is a hardware engineer was willing 
+to help with the hardware design so that left me to construct the hardware and 
+to write the software.
+
+<!-- Place this tag where you want the +1 button to render. -->
+<div class="g-plusone"></div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<H1>Table of Contents</H1>
+<UL>
+    <LI><a href="#The Track" onClick="_gaq.push(['_trackEvent', 'Links', 'Track']);">The Track</a></LI>
+    <LI><a href="#The Electronics" onClick="_gaq.push(['_trackEvent', 'Links', 'Electronics']);">The Electronics</a></LI>
+    <UL>
+        <LI><a href="#The hardware" onClick="_gaq.push(['_trackEvent', 'Links', 'Hardware']);">Hardware</a></LI>
+        <LI><a href="#Lane sensors" onClick="_gaq.push(['_trackEvent', 'Links', 'Lane sensors']);">Lane sensors</a></LI>
+        <LI><a href="#Start sensor" onClick="_gaq.push(['_trackEvent', 'Links', 'Start sensor']);">Start sensor</a></LI>
+        <LI><A HREF="#Ground Lines" onClick="_gaq.push(['_trackEvent', 'Links', 'Ground']);">Ground Lines</A></LI>
+        <LI><a href="#Schematic" onClick="_gaq.push(['_trackEvent', 'Links', 'Schematic']);">Schematic</a></LI>
+        <LI><a href="#Parts list" onClick="_gaq.push(['_trackEvent', 'Links', 'Parts']);">Parts list</a></LI>
+        <li><a href="#Timer Boards For Sale" onClick="_gaq.push(['_trackEvent', 'Links', 'Sales']);"><strike>Timer Boards For Sale</strike></a> (sorry, no longer available)</li>
+        <ul>
+            <li><a href="#Assembly Instructions" onClick="_gaq.push(['_trackEvent', 'Links', 'Instructions']);">Assembly Instructions</a></li>
+        </ul>
+    </UL>
+    <LI><a href="#Software" onClick="_gaq.push(['_trackEvent', 'Links', 'Software']);">Software</a></LI>
+    <LI><a href="#Pictures" onClick="_gaq.push(['_trackEvent', 'Links', 'Pictures']);">Pictures</a></LI>
+    <LI><a href="#Forum" onClick="_gaq.push(['_trackEvent', 'Links', 'Forum']);">Forum</a></LI>
+</UL>
+<P>&nbsp;</P>
+<HR SIZE="4" WIDTH="100%">
+<H2><A NAME="The Track"></A>The Track</H2>
+The Pack purchased the lumber, screws, bolts, and other hardware to construct 
+the regulation Cub Scout Pinewood Derby track as described in <i>The Cub Scout 
+How-To Book</i>. This track has three lanes and is made from two sheets 
+of 4'x8' plywood making the track 32 feet long by 2 feet wide. The total 
+cost of materials for the physical track was $50. I should warn you that 
+it took about 2 months of hard work in the evenings and weekends to finish construction 
+of the track. 
+<P>The two most important features of the track are first, that it has room 
+below the track at the finish line to allow the cable from the lane sensors 
+to pass out from under the track without being crushed or bent too severely. 
+<P><A NAME="Start Gate"></A>Second, the start gate is operated automatically 
+rather than manually. By this I mean that the lowering (or starting) action 
+of the gate should be operated mechanically rather than by people power. 
+For example, on our track the gate is held in the &quot;up&quot; position by 
+a person and then simply released. A rubber band pulls the gate down out 
+of the way of the cars to allow the race to start. This guarantees that 
+the gate is lowered at the same speed for each race. 
+<P>If your gate is operated by a person rather than a mechanical system (such 
+as our rubber band) then the race results can be significantly altered by the 
+starter not lowering the gate at the same speed each time. Since the computer 
+software measures races down to better than 1/1,000,000th of a second, the computer 
+can easily detect this starting gate difference at the finish line.
+<P><A NAME="Lamp"></A>The only other note is the need for a steady source of 
+light placed over the track pointing at the lane sensors. I use a cheap clip 
+on lamp to do the job (about $2 at your local hardware store). It must be an 
+incandescent light (a regular light bulb), not florescent. The computer can 
+&quot;see&quot; the 60 Hz power pulses in a florescent tube and will mistake 
+them for race finishes. You can clip this light onto the back of a chair and 
+shine it at the track. Anything that will flood the light sensors with steady 
+light will work. 
+<P>
+<HR SIZE="4" WIDTH="100%">
+<H2><A NAME="The Electronics"></A>The Electronics</H2>
+I reasoned that since I had a laptop computer that I was willing to use to time 
+the cars that the hardware shouldn't be that expensive. All it needed 
+to do was recognize when the race started and then register each car as it crossed 
+the finish line. It didn't seem to me that this needed to cost $160 per 
+lane! By using the laptop computer to do all the decision making and timing 
+I could reduce the &quot;external&quot; hardware to a very minimal set. 
+<P>
+<HR WIDTH="75%">
+<H3><A NAME="The hardware"></A>The Hardware</H3>
+In the following example from the source code you can see that the software 
+supports the parallel port as the input device to the PC. The software makes 
+implicit assumptions that the start sensor and lane sensors are in bit order 
+on the port. So, as seen below, the start switch should be hooked to pin 15 
+which is bit 0 of the status port (or to pin 2 which is data bit 0). The lane 
+sensors should be hooked up in order starting with pin 13 (or pin 3). 
+<P>The safer choice is to use the status port bits (pins 15, 13, 12, 10, 11) 
+because all parallel ports support input from these pins. Some parallel ports 
+also support input from the data bits (pins 2-9). These are the ECP/EPP ports. 
+They are also known as enhanced parallel ports or bi-directional parallel ports. 
+The only advantage to using the data bits over the status bits is that there 
+are more data bits which means more inputs and thus more lanes. If you are building 
+the standard three lane track I'd strongly encourage you to use the status bits. 
+<BLOCKQUOTE>
+    <tt>#define LPT1_PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x3BC</tt> 
+    <BR><tt>#define LPT2_PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x378</tt> 
+    <BR><tt>#define LPT3_PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x278</tt> 
+    
+    <P><tt>#define DATA_PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (LPT_BASE 
+    + 0)</tt> <BR><tt>#define STATUS_PORT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (LPT_BASE 
+    + 1)</tt> <BR><tt>#define CONTROL_PORT&nbsp;&nbsp;&nbsp;&nbsp; (LPT_BASE 
+    + 2)</tt> <BR><tt>#define ECP_CONTROL_PORT (LPT_BASE + 0x402)</tt> 
+    <P><tt>// In the following comments two pin numbers are listed. The actual 
+    pin</tt> <BR><tt>// that will be read depends on the setting of the INPUT_SOURCE 
+    parameter.</tt> <BR><tt>// If it is set to 1, then pins 2-9 are used, if 
+    0 then pins 15, 13, etc. are</tt> <BR><tt>// used. This setting is based 
+    on two things: 1) if the port address for</tt> <BR><tt>// the printer is 
+    0x3BC then we always use 15-11. 2) If the</tt> <BR><tt>// command line switch 
+    'T' is specified as 0 we always use 15-11, if it is 1</tt> <BR><tt>// then 
+    we use pins 2-9.</tt> <BR><tt>// Pins 15-11 are the safest set and work 
+    on all ports, pins 2-9 only work</tt> <BR><tt>// under certain circumstances, 
+    but it gives you 3 more bits.</tt> <BR><tt>#define START_BIT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    0x01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // pin 2 or 15</tt> <BR><tt>#define 
+    LANE1_FINISH&nbsp;&nbsp;&nbsp; 0x02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 3 or 13</tt> <BR><tt>#define LANE2_FINISH&nbsp;&nbsp;&nbsp; 0x04&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 4 or 12</tt> <BR><tt>#define LANE3_FINISH&nbsp;&nbsp;&nbsp; 0x08&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 5 or 10</tt> <BR><tt>#define LANE4_FINISH&nbsp;&nbsp;&nbsp; 0x10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 6 or 11</tt> <BR><tt>#define LANE5_FINISH&nbsp;&nbsp;&nbsp; 0x20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 7</tt> <BR><tt>#define LANE6_FINISH&nbsp;&nbsp;&nbsp; 0x40&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 8</tt> <BR><tt>#define LANE7_FINISH&nbsp;&nbsp;&nbsp; 0x80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // pin 9</tt>
+</BLOCKQUOTE>
+<HR WIDTH="50%">
+<H4><A NAME="Lane sensors"></A>Lane Sensors</H4>
+The physical lane sensors are simple NPN phototransistors (Sylvania part # ECG 
+3037 or NTE3037) hooked to the parallel port input pin with a pull-up resistor. 
+The wiring for each lane is: Input pin to transistor collector to resister to 
+positive; Transistor emitter to ground. See the files section of <a href="#Forum" onClick="_gaq.push(['_trackEvent', 'Links', 'Forum']);">the 
+forum</a> for transistor parts sources.
+<P>
+<HR WIDTH="50%">
+<H4><A NAME="Start sensor"></A>Start Sensor</H4>
+The connection of the start switch is exactly identical except that the transistor 
+is replaced with the switch (see <a href="#Schematic" onClick="_gaq.push(['_trackEvent', 'Links', 'Schematic']);">schematic</a> 
+below). This switch can be any normally open momentary contact switch 
+such as Radio Shack #275-1547. 
+<P>The type of switch you use will depend on the way your start gate is arranged. 
+In our case we use a roller lever switch (RS # 275-017) mounted on the side 
+of the track that is engaged when the gate is in the &quot;up&quot; or starting 
+position. When the gate is lowered to allow the race to start the contact 
+is broken. For accurate timing it is vital that the start gate be operated 
+mechanically rather than manually (<a href="#Start Gate">see note above</a>). 
+<HR WIDTH="50%">
+<P><b><A NAME="Ground Lines"></A>Ground Lines</b></P>
+<P>Pins 18-25 on the DB25 connector that goes to the computer need to be hooked 
+to ground on the circuit. You need to hook the ground from the circuit 
+to any/all of the DB25 pins 18-25. These are all ground lines on the DB25 
+connector. Note that on some laptops do not connect all the pins (18-25) 
+to ground. Sometimes only some of the pins are hooked up. To make 
+sure that you get a good ground connection, I suggest that you tie all the pins 
+(18-25) on the connector together and hook that to ground on the circuit.</P>
+<HR WIDTH="50%">
+<H4><A NAME="Schematic"></A>Schematic</H4>
+Here's a picture of how each sensor is connected: 
+<P><IMG SRC="schematic.gif" ALT="Sensor connection"> 
+<P>Note that in this schematic the pin numbers for the data pins are listed. 
+You should substitute the proper pin numbers depending on whether you 
+are using the status pins (suggested) or the data pins.
+<p>You can get a printable copy of the full schematic in PDF format <a href="GenericPinewoodTimerSchematic.pdf">here</a> 
+(about 90K). 
+This schematic is setup for status pin input and includes an optional power 
+supply section.</p>
+<HR WIDTH="50%">
+<H4><A NAME="Parts list"></A>Parts List</H4>
+<DL>
+    <DT><u>Lane Sensor</u> (one per lane), $3 each</DT>
+    <DD>NPN Phototransistor, Philips Sylvania ECG 3037 or equivalent (NTE3037)</DD>
+    <DD>Specifications:</DD>
+    <DD>VCBO: 50V</DD>
+    <DD>VCEO: 25V</DD>
+    <DD>IC: 50ma</DD>
+    <DD>I Dark: 500na</DD>
+    <DD>I Light: 10ma</DD>
+    <DD>PT: 150mw</DD>
+    <DD>See the files section of <a href="#Forum" onClick="_gaq.push(['_trackEvent', 'Links', 'Forum']);">the forum</a> for a list of 
+    parts sources for the transistor.</DD>
+    <DT><u>Power Supply</u>, $8</DT>
+    <DD>6 volt, 150ma &quot;wall wart&quot; AC adapter, Radio Shack #273-1454</DD>
+    <DT><u>Resistors</u> (package of 5), $0.99</DT>
+    <DD>10K ohm, 1/4 watt (Radio Shack #271-1335) or 1/2 watt (Radio Shack #271-1126)</DD>
+    <DT><u>Start Sensor</u>, $2</DT>
+    <DD>I use a roller level switch (Radio Shack #275-017) but you can use any 
+    normally open, momentary contact switch depending on the design of your 
+    start gate and track.</DD>
+    <DT><u>Start Sensor Connection Wire</u>, $4</DT>
+    <DD>Measure how long your track is and add 5 to 10 feet depending on where 
+    you will position your computer and electronics. Go to Radio Shack 
+    and purchase the least expensive spool of stranded, 2-conductor wire that 
+    meets your needs. You should be able to find a spool for around $4 
+    (example: 50 feet of 24 gauge stranded 2-conductor speaker wire, Radio Shack 
+    #278-1301, $3.19).</DD>
+    <DD><b>NOTE:</b> Only purchase <u>stranded-conductor</u> (<b>not</b> solid-conductor) 
+    wire. Stranded conductor wire is made up of several smaller wires 
+    twisted together. This wire is much more tolerant of the bending and 
+    unbending that will occur as you use the track.</DD>
+    <DT><u>Misc.</u>, $???</DT>
+    <DD>Other miscellaneous components you may need include: a circuit board 
+    to mount the components on (a 4 inch square board should be plenty); a connector 
+    to plug into the back of your computer (DB-25 Male/Pin); a cable to stretch 
+    from the circuit board to the back of the computer; a few feet of small 
+    gauge stranded hookup wire to connect between the circuit board and each 
+    lane sensor; solder; soldering iron; etc.</DD>
+    <DD>Most of this stuff should be laying around in your junk box if you are 
+    any kind of hardware geek at all. If you have to borrow or purchase 
+    a soldering iron to complete this project then I suggest that you beg some 
+    help, rather than a soldering iron, from a friend.</DD>
+    <DT><u>Clip on lamp</u>, $2</DT>
+    <DD>As noted under <a href="#Lamp">The Track</a> above you need to have 
+    a steady source of light for the sensors to operate correctly. I use an 
+    inexpensive aluminum shell clip-on lamp that I picked up at the hardware 
+    store.</DD>
+</DL>
+<hr WIDTH="50%">
+<h3><a name="Timer Boards For Sale"></a>Timer Boards For Sale <font color='red'>Sorry, no longer avaiable</font></h3>
+<p><font color='red'>Due to reduced requests for the boards over the last year, I've decided not to manufacture any more of these boards.  I've now sold the last of my existing stock so they are no longer avaiable.  Sorry for the inconvenience.</font></p>
+<p>I <strike>now</strike> <font color='red'>no longer</font> have timer boards available for sale! These are single-sided, 
+bare boards, approximately 1.25 by 2 inches, that are ready to have the components 
+installed. <b>These boards use the status pins for input so they support 
+at most 4 lanes</b>. <strike>They are available two ways: just the bare board ($6), or the bare 
+board plus the right-angle DB-25 connector ($10). Either way, the 10K resistor 
+pack needed for&nbsp;the project is included with each board.</strike> &nbsp;In order to complete the project 
+you will need to add the following components:</p>
+<ul>
+    <li>Right angle, PC board mount DB-25 male connector (unless you buy the 
+    kit that includes the connector, <a href="http://www.digikey.com/scripts/DkSearch/dksus.dll?KeywordSearch&Keywords=182-725M-ND" target="digikey" title="DigiKey Product Page">DigiKey 
+    #182-725M-ND</a>, $2.61 each + $5 order processing fee + shipping)</li>
+    <li>Power supply components:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>For 
+    9 volt battery operation:</u></li>
+    <ul>
+    <li>220 ohm 1/4 watt resistor (<a href="http://www.radioshack.com/product.asp?catalog%5Fname=CTLG&product%5Fid=271-1313" target="ratshack" title="Radio Shack Product Page">Radio 
+        Shack #271-1313</a>, $0.99, pkg. of&nbsp;5)</li>
+        <li>5.1V Zener diode (1N4733A, <a href="http://www.radioshack.com/product.asp?catalog%5Fname=CTLG&product%5Fid=276-565" target="ratshack" title="Radio Shack Product Page">Radio 
+        Shack #276-565</a>, $0.99, pkg. of 2)</li>
+    <li>9 volt battery clip (I recommend the heavy duty ones: <a href="http://www.radioshack.com/product.asp?catalog%5Fname=CTLG&product%5Fid=270-324" target="ratshack" title="Radio Shack product page">Radio 
+        Shack #270-324</a>, $2.49, pkg. of 5)<br>-- OR --<br><u>For wall-wart 
+        powered operation</u></li>
+        <li>+5 volt regulated supply</li>
+    </ul>
+    <li>Start switch</li>
+    <li>Lane sensors (see parts list above or discussions on the forum for suggestions, 
+    I used IR phototransistors, <a href="http://www.radioshack.com/product.asp?catalog%5Fname=CTLG&product%5Fid=276-145" target="ratshack" title="Radio Shack Product Page">Radio 
+    Shack #276-145</a>, $1.49 each)</li>
+    <li>Hookup wire for start switch and lane sensors</li>
+</ul>
+<p>You may not need the resistor pack OR the power supply components (9v battery 
+clip, Zener diode, 220 ohm resistor)&nbsp;if your computer 
+has built-in pull-up resistors. Unfortunately there is no simple way to 
+know if your computer has the built-in resistors. Some do, some don't. 
+If your computer does not have pull-up resistors your timer may operate 
+erratically or it may give sluggish results.</p>
+<p>Here is a picture of the <a href="bareboard.jpg" target="picture" title="Picture of just the bare board"  onClick="_gaq.push(['_trackEvent', 'Picture', 'bare board']);">bare 
+board</a> and a <a href="finishedboard.jpg" target="picture" title="Picture of a completed board"  onClick="_gaq.push(['_trackEvent', 'Picture', 'finished board']);">completed board</a> if you are interested.</p>
+<!--
+<p>To purchase a board through my secure online payment system (PayPal) click on one of the buttons below.  All prices include first class postage to any US address (sorry, no international orders including Canada and Mexico, NAFTA doesn't apply to us little guys). 
+You can pay using a major credit card or with an e-check (a direct deduction 
+from your checking account).</p>
+<p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="sales@bldesign.com">
+<input type="hidden" name="undefined_quantity" value="1">
+<input type="hidden" name="item_name" value="Pinewood Derby Timer Bare Board">
+<input type="hidden" name="item_number" value="PW001">
+<input type="hidden" name="amount" value="6.00">
+<input type="hidden" name="page_style" value="PayPal">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="http://www.hmpg.net/pinewood/thankyou.html">
+<input type="hidden" name="cancel_return" value="http://www.hmpg.net/pinewood/canceled.html">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but23.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" onClick="_gaq.push(['_trackEvent', 'Sales', 'PW001']);">
+Bare board: $6 including first class postage to any US address
+</form>
+<p><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="sales@bldesign.com">
+<input type="hidden" name="undefined_quantity" value="1">
+<input type="hidden" name="item_name" value="Pinewood Derby Timer Bare Board + DB-25 Connector">
+<input type="hidden" name="item_number" value="PW002">
+<input type="hidden" name="amount" value="10.00">
+<input type="hidden" name="page_style" value="PayPal">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="return" value="http://www.hmpg.net/pinewood/thankyou.html">
+<input type="hidden" name="cancel_return" value="http://www.hmpg.net/pinewood/canceled.html">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but23.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" onClick="_gaq.push(['_trackEvent', 'Sales', 'PW002']);">
+Bare board PLUS the required DB-25 connector: $10 including 
+first class postage to any US address
+</form><p>In either case you will be taken to the secure PayPal payment page. You will 
+be making your payment to my company, BL Design Solutions, LLC.</p>
+-->
+<h4><a name="Assembly Instructions"></a>Assembly Instructions (for the&nbsp;V2 
+boards):</h4>
+<p>Assembly instructions for the original V1 boards are <a href="v1boards.html">archived 
+here</a>.</p>
+<p>Refer to the <a href="finishedboard.jpg" target="picture" title="Picture of a completed circuit board"  onClick="_gaq.push(['_trackEvent', 'Picture', 'finished board']);">completed 
+board photo</a> as necessary:</p>
+<ul>
+    <li>Make sure you insert all components on the BLANK side of the board. 
+    The side with the traces is only used to solder parts in place. There 
+    should be no components on the solder side (the side with the traces).</li>
+    <li>Insert the pins of the DB-25 connector through the holes and solder 
+    the pins in place. It is not necessary to solder every pin. You 
+    can simply solder all the pins with traces to them, plus a few on the opposite 
+    end of the connector to help hold it in place. &nbsp;In order to keep the 
+    board cost low I elected not to put a solder mask on the board. Make sure 
+    that you don't accidentally solder bridge between two pins or between a 
+    pin and a trace.</li>
+    <li>Insert the included resistor pack (the little blue package with six 
+    pins in a row) into the holes in the middle of the board. 
+    Note that one of the pads for the resistor pack is marked with a '1' on 
+    the solder side of the board. This corresponds to the black dot on the resistor 
+    pack. Make sure that the dot and the '1' are aligned. This <u>usually</u> 
+    means that the printed words on the resistor pack face the DB-25 connector 
+    (see <a href="resistorpack.jpg" target="picture" title="Resistor Pack Orientation" onClick="_gaq.push(['_trackEvent', 'Picture', 'resistor pack']);">this 
+    picture</a> for an example). Flip the board over and solder each pin in place. Again, make 
+    sure that you do not solder bridge between a pin and an ajoining trace or 
+    between two pins.</li>
+    <li>Solder wires onto the ends of the phototransistors for each lane. Use 
+    one color of wire for the emitter and a different color for the collector 
+    on each sensor. The collector side of the phototransistor is usualy marked 
+    in some way (check the back of the package the component came in). This will make the next step MUCH easier and less 
+    error prone. Use enough wire to reach from the back of your PC to the 
+    track. I would use no more than 4 to 6 feet of wire on 
+    each phototransistor. Each sensor should have the same amount of wire 
+    as all the others for proper timing (electricity travels about 9 inches 
+    per nanosecond so if one wire is 9 inches shorter than another, the timing 
+    will be off by 1 nanosecond between the two sensors). I used a 6 foot length 
+    of Cat 5e network cable to attach my sensors. &nbsp;This cable has four 
+    pairs of wires inside. &nbsp;Since I only needed three lanes, I used the 
+    forth pair to attach to the cord from my start gate.</li>
+    <li>Solder 
+    (or otherwise attach) a wire to each side of the start gate switch. Remember 
+    to leave enough wire to stretch all the way to the top of the track.</li>
+    <li>Refering to the solder side of the board, note that there are 5 rows 
+    of two holes each on the right side of the board. These are the connections 
+    for the start gate (at the bottom, notice the letters 'ST' to the right 
+    of the holes) and the lane sensors (top row&nbsp;is lane 1, second row is 
+    lane 2, <u>third row is lane 4</u>, <u>fourth row is lane 3</u>). 
+    Notice that lanes 3 and 4 are out of order (in the photograph you can see 
+    that I did not hook up lane 4 on my board). &nbsp;This was necessary in 
+    order to line up the traces and make the board smaller. The right column 
+    (looking at the solder side of the board) is the emitter connection (note 
+    the word &quot;emitter&quot; at the top of the right column) which 
+    is where the emitter from each sensor should be connected (the 
+    wire from the collector goes in the other hole in each row). Flip 
+    the board back over so you are looking at the component (blank) side and 
+    then run the wires through the board. Flip the board back over and solder them in place making sure 
+    to connect the emitter to the correct side on each row. Alternately, 
+    you can solder a connector in place and then connect 
+    the wires to that so that you can attach and remove the sensors easily. 
+    While you are at it, solder the wire from the start gate to the bottom row of holes (polarity does not matter for the start gate, either wire in 
+    either hole will work).</li>
+    <li>If you are using the 9 volt battery option, follow these instructions, 
+    otherwise skip this step. Remember to insert the&nbsp;components from the 
+    blank side of the board and solder on the side with the traces just as before. 
+    Insert the RED lead from the 9 volt battery clip into the V+ pad and put 
+    the BLACK lead into the pad marked 'GND'. &nbsp;Now flip the board over 
+    and solder these leads in place. Next, insert a 220 ohm resistor into the 
+    hole directly above the V+ pad. &nbsp;Put the other lead into the hole marked 
+    '+5'. Flip the board over and solder the two resistor leads in place. &nbsp;Clip 
+    off any excess resistor leads that are sticking out of the back of the board. 
+    Now insert the Zener diode into the two slightly larger holes just above 
+    where the resistor is. The Zener diode and the resistor should be parallel 
+    to each other. The Zener diode is polorized as indicated by the black band 
+    near one end of the glass part of the diode. This black band should be closer 
+    to the DB-25 connector. Check that your components match the placement and 
+    orientation of those on the board in <a href="finishedboard.jpg" target="picture" title="Finished circuit board" onClick="_gaq.push(['_trackEvent', 'Picture', 'finished board']);">the 
+    photograph.</a></li>
+    <li>If you are using a regulated +5 volt supply follow these instructions, 
+    otherwise skip this step. Refering to the solder side, note the markings for &quot;+5&quot; and &quot;GND&quot; 
+    which indicate where the +5 line and the ground line from the power 
+    supply should be connected. DO NOT hook the +5 supply up to the 'V+' pad 
+    on the board. If you use a +5 regulated supply you do not need to install 
+    the 9 volt battery clip, 220 ohm resistor or Zener diode.</li>
+    <li>Now, <b>DOUBLE CHECK EVERYTHING!!!</b> I refuse to be held responsible 
+    for damage to your computer if you have not connected things correctly and 
+    double checked your work. Make sure you have the +5 and ground from 
+    the power supply connected correctly. Plug in the power supply or hook up 
+    the 9 volt battery and 
+    check the voltages with a meter to confirm this. While you are at it, check 
+    that the various pins on the DB-25 change state properly when you cover 
+    and uncover the phototransistors. You should be able to check this 
+    quite easily using a volt meter.</li>
+    <li><b>ONLY</b> after you have checked <b>EVERYTHING</b> and then <b>DOUBLE 
+    CHECKED</b> everything should you attach the circuit to your PC. Run 
+    the pinewood software and use the diagnostics screen to confirm that each 
+    of the bits changes state properly when you cover and uncover each phototransistor. 
+    Also check that the start gate switch changes states correctly. If 
+    not, carefuly review the instructions above to make sure you haven't missed 
+    anything. Check closely for phototransistors that are not hooked up correctly 
+    (emitter and collector reversed).</li>
+</ul>
+<HR SIZE="4" WIDTH="100%">
+<H3><A NAME="Software"></A>The Software</H3>
+The heart of the system is the software, designed to run under MS-DOS (not WinDoze), 
+that watches the sensors and manages the race. This software is fairly simple 
+in design. The major components are a configuration function which allows you 
+to specify which parallel port to use (the default is LPT1) and what pins to 
+read (default is status pins); an input function which reads the input signal 
+bits from the port; and a timing function which is able to read the 1.193Mhz 
+clock that all PCs use as their time base. 
+<P>Wrapped around these basic functions is the simple logic which manages the 
+race. To start a race you must enter the number of cars to be raced. The cars 
+are numbered from 1 to 'n' (where 'n' is the number of cars) in no particular 
+order. There must be at least as many cars as your track has lanes (if you have 
+less cars, use the L command line option to tell the software you have less 
+lanes). The computer will begin the racing by having you put as many cars on 
+the track as you have lanes, starting with car #1 in lane 1 and car #2 in lane 
+2 and so on. The software then confirms that all the sensors are in the appropriate 
+state and then awaits the start of the race. Once the race has started the computer 
+waits for all the cars to cross the finish line. Once all the cars have crossed 
+the finish line the computer asks if it should record this race and move on 
+or if you want to rerun that heat. Once you record a race the computer will 
+instruct you to put on the next set of cars. The second race will simply shift 
+each car over one lane so car #2 will be in lane 1 and car #3 in lane 2 and 
+so on. This insures that each car races exactly once in each lane to eliminate 
+any variance in the speed of different lanes. 
+<P>Quickly thinking through the problem should tell you that you will only run 
+as many races as you have cars (no matter how many lanes you have). This process 
+goes quite quickly for all but the largest packs. The average time for each 
+heat is somewhat less than 30 seconds if you are at all efficient. This means 
+that if you have a pack of 40 boys you will be done in under 20 minutes. This 
+is quite an improvement if you are used to manual racing using the elimination 
+heat system. 
+<P>Also, if you think about it, on an electronically timed track adding more 
+lanes doesn't help. Every car has to run in every lane and you always run as 
+many races as you have cars. Therefore, save yourself time, money, effort and 
+energy and build only a three lane track. This allows enough cars to run at 
+any one time that the boys are still interested in the race but doesn't create 
+a major problem in construction, storage, etc. It also conveniently matches 
+the track plans in <i>The Cub Scout How-To Book</i>. 
+<P><b>You can download a copy of the software immediately by joining the <a href="http://groups.yahoo.com/group/PinewoodTimer">Pinewood 
+Derby Timer Forum</a> (see the <a href="#Forum" onClick="_gaq.push(['_trackEvent', 'Links', 'Forum']);">Forum</a> section below) and 
+going to the files area.</b> If you don't want to join the forum you can contact 
+me <A HREF="mailto:pinewood@hmpg.net?subject=Pinewood Software Request" onClick="_gaq.push(['_trackEvent', 'XLink', 'email software request']);">via 
+e-mail</A> to obtain a copy of the software. However, I <B><U>strongly</U></B> 
+encourage you to join the forum!
+<P>There are three optional command line parameters to the program as follows: 
+<BLOCKQUOTE>
+Px = Set the port number to x (x is 1, 2 or 3 for LPT1, LPT2 or LPT3) <BR>&nbsp;&nbsp;&nbsp; 
+    -- OR -- <BR>Pxxx = Set the port address to xxx (xxx is in hex) <BR>Tx = 
+    Port type 0 or 1 (0 = read from status port, pins 15-11 or 1 = data port, 
+    pins 2-9*) <BR>Lx = Set the number of lanes (default is 3) 
+    <P>* Note that the use of the data pins for input (option T1) requires an 
+    EPP or ECP parallel port.&nbsp; These ports support bi-directional I/O on 
+    the data pins.&nbsp; Most older computers do <b>not</b> have EPP/ECP ports.&nbsp; 
+    If you are planning to use an older computer with a larger track (more than 
+    4 lanes) you should confirm that it has an EPP/ECP port.
+</BLOCKQUOTE>
+Here are some examples of using the various command line parameters
+<UL>
+    <PRE>A:\&gt; pinewood L4<BR>Starts the program for a 4 lane track</PRE>
+    <PRE>A:\&gt; pinewood P2<BR>Starts the program using LPT2 instead of &nbsp;LPT1 (the default)</PRE>
+    <PRE>A:\&gt; pinewood T1<BR>Uses the data pins rather than the status pins</PRE>
+    <PRE>A:\&gt; pinewood L4 T1<BR>Combines two options: uses 4 lanes on the data pins</PRE>
+</UL>
+<P>If you run the software and use the diagnostic function (3) it will show 
+you what port address you are using and what pins you are using. It also shows 
+the current (real-time) state of all the pins so you can see each bit change 
+back and forth as needed. This is very helpful for diagnosing problems with 
+the track installation. </P>
+<P>Here's an example output from the diagnostics function: 
+<BLOCKQUOTE>
+    <PRE><tt>Port Diagnostics</tt></PRE>
+    <PRE><tt>Configuration:<BR>Lanes: 3</tt>
+<tt>LPT Port: 0x378</tt><BR><tt>Input: Status (pins 15, 13, 12, 10, 11)</tt></PRE>
+    <PRE><tt>Bits     Clicks</tt><BR><tt>00001011 17</tt></PRE>
+</BLOCKQUOTE>
+The bits displayed are, from <b>RIGHT to LEFT</b>, Start Gate, Lane 1, Lane 
+2, Lane 3 ... (this is <b>opposite</b> to the order listed in the 'Input: ' 
+line above, e.g. the right hand bit is pin 15 in the above example). All bits 
+should be at 0 in the normal starting state for a race (start gate closed, all 
+lanes clear). 
+<P>Presently the software has an arbitrary limit of 100 cars. 
+<P>
+<HR SIZE="4" WIDTH="100%">
+<H3><A NAME="Pictures"></A>Pictures</H3>
+Several people have asked to see pictures of the track and I've finally relented.&nbsp; 
+Here are several pages that show close up shots of different parts of the track 
+and electronics.&nbsp; These pages each contain one or two large images (1024x768, 
+about 140K each) and may take a while to load if you have a slow connection.
+<UL>
+    <LI>&nbsp;<a href="circuit.html">The Circuit Board</a></LI>
+    <LI>&nbsp;<a href="start.html">The Start Gate and Switch</a></LI>
+    <LI>&nbsp;<a href="lanes.html">The Lane Sensors</a></LI>
+    <LI>&nbsp;<a href="finish.html">The End of the Track with the Light</a></LI>
+</UL>
+<P>
+<HR SIZE="4" WIDTH="100%">
+<H3><A NAME="Forum"></A>Forum</H3>
+There is an electronic forum, hosted by Yahoo, where we can all meet and discuss 
+the pinewood derby timer, software and hardware. Please consider joining the 
+forum and adding your valuable input to the discussions there.
+<P>The forum features the following:
+<UL>
+    <LI>Message board</LI>
+    <LI>Real-time chat area</LI>
+    <LI>Files area</LI>
+    <UL>
+        <LI><b>Download the latest version of the pinewood software here!</b></LI>
+        <LI>Files and instructions for creating a DOS boot disk</LI>
+        <LI>Lists of parts sources for the transistors</LI>
+        <LI>Frequently asked questions (FAQ) file</LI>
+        <LI>Free Windows based software is available too</LI>
+    </UL>
+    <LI>Photos area (post photos of your track, timer, derby, etc.)</LI>
+    <LI>Bookmarks area (share bookmarks to your favorite Pinewood Derby related 
+    sites)</LI>
+    <LI>Database area (maybe we could post the fastest times from each derby?)</LI>
+    <LI>Polls</LI>
+</UL>
+<P><font size=+1><B>You can join by visiting <a href="http://groups.yahoo.com/group/PinewoodTimer">http://groups.yahoo.com/group/PinewoodTimer</a>.</b></font> 
+<P>
+<HR SIZE="4" WIDTH="100%"><SCRIPT LANGUAGE=javascript SRC="http://ss.webring.com/navbar?f=j&y=jbrown561&u=10010542">
+</SCRIPT><noscript><CENTER>
+    <TABLE WIDTH="75%" CELLPADDING=2 CELLSPACING=0>
+        <TR VALIGN=bottom>
+            <TD>
+                <TABLE BGCOLOR=990066 BORDER=0 WIDTH="75%">
+                    <TR>
+                        <TD>
+                            <TABLE BGCOLOR=eeeeee CELLPADDING=6 CELLSPACING=0 BORDER=0 WIDTH="100%">
+                                <TR>
+                                    <TD ALIGN=center><font face=arial size=-1>This 
+                                        site is a member of the Pinewood Derby 
+                                        WebRing. To browse visit</font><BR><font face=arial size=-2> 
+                                        <a href="http://ss.webring.com/navbar?f=l&y=jbrown561&u=10010542">http://ss.webring.com/navbar?f=l&amp;y=jbrown561&amp;u=10010542 
+                                        </a></font></TD>
+                                </TR>
+                            </TABLE>
+                        </TD>
+                    </TR>
+                </TABLE>
+            </TD>
+        </TR>
+    </TABLE>
+</CENTER></noscript> 
+<P>
+<HR SIZE="4" WIDTH="100%">
+<ADDRESS>
+This page maintained by <A HREF="mailto:pinewood@hmpg.net" onClick="_gaq.push(['_trackEvent', 'XLink', 'email maintainer']);">James H. Brown</A>.
+<a rel="author" href="https://plus.google.com/u/0/113832610046866074846">
+  <img src="http://www.google.com/images/icons/ui/gprofile_button-16.png" width="16" height="16">
+</a>
+</ADDRESS>
+<BR> <CENTER><IMG SRC=http://counters.honesty.com/cgi-bin/honesty-counter.cgi?df=gen.2261424.00000><BR> 
+    <font size=-1>Free counters provided by <a href=http://www.andale.com>Andale</a>.<BR></font> 
+    </CENTER>
+</BODY>
+
+</HTML>

@@ -1,0 +1,24 @@
+http://homepages.inf.ed.ac.uk/iainr/documentation/conserver/x222.html
+# Modified from Iain Rae's pinout 
+# For KB 
+# Use red connectors 
+# 
++---------------------------------------------+ 
+| Modular connector pinout for KB server area | 
++---------------------------------------------+ 
+
+NOTE THAT THESE COLOURS REFER TO THE UNSHIELDED 
+CONNECTORS SUPPLIED BY CPC, OTHER SUPPLIERS MAY 
+USE A DIFFERENT COLOUR CODING. USE WITH CAUTION 
+
+RJ45 Colours DB9F or DB25M Signal 
+---- ------- ---- ----- ------ 
+1 ------ BLUE--------------> 6 6 DSR 
+2 --------- Orange --------> 1 8 DCD 
+3 ------------- Black -----> 4 20 DTR 
+4 --------- Red -----------> 5 7 Com 
+5 --------- Green ---------> 3 2 RxD 
+6 ---------- Yellow -------> 2 3 TxD 
+7 ---------- Brown --------> 8 5 CTS 
+8 -------- White ----------> 7 4 DTR
+
